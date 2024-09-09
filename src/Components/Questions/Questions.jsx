@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useId } from "react";
 import Button from "../Button";
 import RatingReview from "./Star";
+import ThankingUser from "../ThankingUser";
 
 const Questions = ({ questions }) => {
   let [username, setusername] = useState("");
@@ -87,7 +88,7 @@ const Questions = ({ questions }) => {
       </div>
       <div className="flex justify-center mb-8">
         {currentquestionindx === questions.length && (
-          <Button name="Submit" onclick={handleSubmit} link={"/"} />
+          <Button name="Submit" onclick={handleSubmit} link={"/thankyou"} />  
         )}
       </div>
     </div>

@@ -5,6 +5,7 @@ import Button from "./Components/Button";
 import Questions from "./Components/Questions/Questions";
 import './index.css'
 import './App.css'
+import ThankingUser from './Components/ThankingUser';
 
 function App() {
   const questions = [
@@ -28,6 +29,10 @@ function App() {
     },{
       path:"",
       element:<Welcome/>
+    }
+    ,{
+      path:"/thankyou",
+      element:<ThankingUser/>
     }
   ])
   return (
