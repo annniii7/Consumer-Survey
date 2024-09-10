@@ -71,7 +71,7 @@ const Questions = ({ questions }) => {
       </div>
       <div className="questions">
         <div className="ques1 flex flex-col items-center mt-40 text-4xl">
-          <h2> Question:{currentquestionindx}</h2>
+          <h2> {`Question ${currentquestionindx}/${questions.length}`}</h2>
           <h1 className="mb-5">{questions[currentquestionindx - 1]}</h1>
           {currentquestionindx === 4 && currentquestionindx < 5 ? (
             <RatingReview rating={rating} setRating={setRating} length={10} />
@@ -81,12 +81,12 @@ const Questions = ({ questions }) => {
             )
           )}
           {currentquestionindx === 5 && (
-            <input
+            <textarea
               onChange={userText}
               type="text"
               placeholder="Type here..."
-              className="rounded-xl border-8 border-black p-3 bg-beige text-black h-[200px] w-[500px] "
-            ></input>
+              className="rounded-xl border-8 border-black p-3 bg-beige text-black h-[200px] w-[600px] "
+            ></textarea>
           )}
         </div>
       </div>
@@ -94,7 +94,7 @@ const Questions = ({ questions }) => {
         <Button name="Prev" onclick={handlePrevious} />
         <Button name="Next" onclick={handleNext} />
       </div>
-      <div className="flex justify-center mb-8">
+      <div className="flex justify-center h-[50px] items-center">
         {currentquestionindx === questions.length && (
           <Button name="Submit" onclick={handleSubmit} link={"/thankyou"} />
         )}
