@@ -18,6 +18,11 @@ const Questions = ({ questions }) => {
     setusername(username);
     setuseremail(useremail);
   }, []);
+  
+  useEffect(() => {
+    // Set the rating to the stored rating for the current question index
+    setRating(useranswers[currentquestionindx - 1] || 0);
+  }, [currentquestionindx, useranswers]);
 
   const additem = (newitem) => {
     setuseranswers([...useranswers, newitem]);
@@ -29,13 +34,17 @@ const Questions = ({ questions }) => {
         updatedAnswers[currentquestionindx - 1] = rating;
         setuseranswers(updatedAnswers);
       }
-      setRating(0); 
-      setcurrentquestionindx(currentquestionindx + 1);
+      setRating(0);
+      if (currentquestionindx < questions.length) {
+        setcurrentquestionindx(currentquestionindx + 1);
+        // Update the rating state with the rating for the new question
+        setRating(useranswers[currentquestionindx] || 0);
+      }
     }
   };
   const handlePrevious = () => {
     if (currentquestionindx > 1) {
-      const prevIndex = currentquestionindx - 2; 
+      const prevIndex = currentquestionindx - 2;
       setcurrentquestionindx(currentquestionindx - 1);
       setRating(useranswers[prevIndex] || 0);
     }
@@ -53,7 +62,7 @@ const Questions = ({ questions }) => {
         const newUser = {
           username: username,
           useremail: useremail,
-          userId: id, 
+          userId: id,
           userratings: useranswers,
           userFeedback: usertext,
         };
