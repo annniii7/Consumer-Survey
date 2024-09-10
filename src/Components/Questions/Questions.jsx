@@ -24,19 +24,18 @@ const Questions = ({ questions }) => {
   };
   const handleNext = () => {
     if (currentquestionindx < questions.length) {
-      // Save the rating for the current question
       if (rating > 0) {
         const updatedAnswers = [...useranswers];
         updatedAnswers[currentquestionindx - 1] = rating;
         setuseranswers(updatedAnswers);
       }
-      setRating(0); // Reset rating for the next question
+      setRating(0); 
       setcurrentquestionindx(currentquestionindx + 1);
     }
   };
   const handlePrevious = () => {
     if (currentquestionindx > 1) {
-      const prevIndex = currentquestionindx - 2; // Array index is zero-based
+      const prevIndex = currentquestionindx - 2; 
       setcurrentquestionindx(currentquestionindx - 1);
       setRating(useranswers[prevIndex] || 0);
     }
@@ -54,7 +53,7 @@ const Questions = ({ questions }) => {
         const newUser = {
           username: username,
           useremail: useremail,
-          userId: id, // Make sure `id` is defined somewhere
+          userId: id, 
           userratings: useranswers,
           userFeedback: usertext,
         };
